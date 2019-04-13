@@ -4,14 +4,11 @@
 @section('content')
 
 
-@if(session()->has('success'))
+@include('partials.success')
 
-  <div class="alert alert-success">
 
-  	{{session()->get('success')}}
-  	</div>
-  	
-@endif
+
+@include('partials.errors')
 
 <div class="d-flex justify-content-end mb-2">
 	<a href="{{route('post.create')}}" class="btn btn-success">Add Post

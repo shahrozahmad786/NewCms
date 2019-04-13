@@ -80,6 +80,11 @@
             
 @auth
       <div class="container">
+
+           
+                 
+
+
           
                      <div class="row">
             <div class="col-md-4">
@@ -94,6 +99,11 @@
 
                     <li class="list-group-item">
                         <a href="{{route('category.index')}}">Categories</a>
+                    </li>
+
+
+                          <li class="list-group-item">
+                        <a href="{{route('tag.index')}}">Tags</a>
                     </li>
 
                 </ul>

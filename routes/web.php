@@ -17,11 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
+Route::middleware(['auth'])->group(function()
+{
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 
 // POst Controller
-Route::resource('/post','PostController');
+Route::resource('/post','PostController')->middleware('auth');
 
 Route::get('/trashed_post','PostController@trashed')->name('trashed_post.index');
 
@@ -33,3 +38,8 @@ Route::put('/restore-post/{post}','PostController@restore')->name('restore-post'
 
 Route::resource('/category','CategoryController');
 
+
+
+//Tags Controller
+Route::resource('/tag','TagController');
+});

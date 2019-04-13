@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Requests\Post\CreatePostRequest;
+use App\Http\Requests\Post\UpdatePostRequest;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('VerifyCategoriesCount')->only([
+          'create','store']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +35,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories',Category::all());
+
+        return view('posts.create')->with('categories',Category::all())->with('tags',Tag::all());
     }
 
     /**
@@ -38,9 +47,11 @@ class PostController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+
+
         $image=$request->image->store('posts');
 
-        Post::create([
+        $post=Post::create([
         
         'title'=>$request->title,
         'description'=>$request->description,
@@ -51,6 +62,11 @@ class PostController extends Controller
 
 
         ]);
+        if($request->tags)
+
+        {
+            $post->tags()->attach($request->tags);
+        }
         session()->flash('success','Post added successfuly');
 
         return redirect()->route('post.index');
@@ -77,7 +93,7 @@ class PostController extends Controller
     {
 
         // dd($post);
-        return view('posts.create')->with('post',$post)->with('categories',Category::all());
+        return view('posts.create')->with('post',$post)->with('categories',Category::all())->with('tags',Tag::all());
     }
 
     /**
@@ -87,7 +103,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdatePostRequest $request, Post $post)
+
+
     {
         $data=$request->only(['title','description','published_at','content']);
 
@@ -99,6 +117,14 @@ class PostController extends Controller
 
             $data['image']=$image;
 
+
+
+        }
+
+
+        if($request->tags)
+        {
+            $post->tags()->sync($request->tags);
         }
 
         $post->update($data);

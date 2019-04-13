@@ -15,20 +15,9 @@
 		</div>
 		<div class="card-body">
 
+			@include('partials.errors')
 
-			@if($errors->any())
-			<div class="alert alert-danger">
-				<ul class="list-group">
-					@foreach ($errors->all() as $error)
 
-					<li class="list-group-item text-danger">
-						{{$error}}
-					</li>
-					@endforeach
-				</ul>
-			</div>
-			@endif
-				 
 				<form action="{{isset($post) ? route('post.update',$post->id) : route('post.store')}} " method="post" enctype="multipart/form-data">
 
 					@csrf
@@ -54,7 +43,9 @@
 
 
 		 	 	 		
-	<input type="text" class="form-control" id="description" name="description"  value="{{isset($post) ? $post->description :"" }}" placeholder="Enter Description">
+	<textarea  class="form-control" id="description" name="description" cols="5" rows="5">
+		{{isset($post) ?$post->description :""}}
+	</textarea>
 		 	 	
 
 		 	 	</div>  
@@ -83,7 +74,7 @@
 
     @if(isset($post))
  <div class="form-group">
-<img src="{{asset('storage/'.$post->image)}}" style="width: 60px">
+<img src="{{asset('storage/'.$post->image)}}" style="width: 100%">
  </div>
 
     @endif
@@ -125,8 +116,40 @@
 				</div>   
 
 
+@if($tags->count() >0)
+	 	 <div class="form-group">
+	 	 	 	<h4 for="tags"> Tags</h4>
+
+	 	 	 <select name="tags[]" id="tags" class="form-control tags-selector" multiple="multiple">
+	 	    
+
+	 
+	
+	 	 	 	@foreach ($tags as $tag)
+	 	 	 	<option value="{{$tag->id}}"
 
 
+	 	 	 		@if(isset($post))
+	 	 	 		@if($post->hasTag($tag->id))
+	 	 	 		selected
+
+	 	 	 		@endif
+	 	 	 		@endif 
+
+
+	 	 	 		>
+
+	 	 	 		{{$tag->name}}
+
+
+	 	 	 	</option>
+	 	 	 	@endforeach
+
+	 	 	 </select>
+
+	 	</div>   
+
+@endif
 
 
     	 
@@ -152,6 +175,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 
 
 
@@ -160,6 +185,11 @@
 
 		enableTime:true
 	})
+
+
+	$(document).ready(function() {
+    $('.tags-selector').select2();
+});
 </script>
 
 
@@ -171,6 +201,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.1.0/trix.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 </script>
 
