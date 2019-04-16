@@ -30,7 +30,6 @@ class WelcomeController extends Controller
 
     	
 
-
     	return view('welcome')
     	->with('posts',$post)
     	->with('categories',Category::all())
