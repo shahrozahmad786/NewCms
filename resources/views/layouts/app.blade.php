@@ -58,11 +58,23 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    
+
+
+    <a class="dropdown-item" href="{{ route('users.edit-profile') }}">
+                                    MY PROFILE
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+
+
+
+
+
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
@@ -89,12 +101,19 @@
                      <div class="row">
             <div class="col-md-4">
 
+          @if(auth::user()->isAdmin())
+           
+                <li class="list-group-item">
+                    <a href="{{route('users.index')}}">Users</a>
+                </li>
+               @endif
+
                 <ul class="list-group">
                     <li class="list-group-item">
                         <a href="{{route('post.index')}}">Post</a>
                     </li>
 
-             
+        
 
 
                     <li class="list-group-item">

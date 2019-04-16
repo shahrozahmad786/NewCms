@@ -13,6 +13,8 @@ class CreatePostTagTable extends Migration
      */
     public function up()
     {
+        //msut be singular and starts with alphabettical order
+        // many to many relations
         Schema::create('post_tag', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('post_id');

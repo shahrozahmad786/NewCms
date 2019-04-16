@@ -46,7 +46,7 @@
         					
 
 					 <td>
-					 	<img src="{{'storage/'.$post->image}}" style="width: 60px">
+					 	<img src="{{'storage/'.$post->image}}" style="width: 100px">
 					 </td>
 
 

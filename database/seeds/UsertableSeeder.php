@@ -1,8 +1,9 @@
 <?php
 
 
-use Illuminate\Database\Seeder;
 use App\User;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 class UsertableSeeder extends Seeder
 {
     /**
@@ -12,12 +13,19 @@ class UsertableSeeder extends Seeder
      */
     public function run()
     {
-        $user1 = new User();
-        $user1->name = 'admin';
-        $user1->email = 'admin@admin.com';
-   
-        $user1->password = bcrypt('123456');
-      
-        $user1->save();
+        $user=User::where('email','admin@admin.com')->first();
+
+
+        if(!$user)
+
+        {
+          User::create([
+
+           'name'=>'admin',
+           'email'=>'admin@admin.com',
+           'role'=>'admin',
+           'password'=>Hash::make('123456')
+          ]);
+        } 
     }
 }

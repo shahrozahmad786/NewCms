@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Blog\PostsController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,9 +15,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','WelcomeController@index')->name('welcome');
+Route::get('blog/posts/{post}','Blog\PostsController@show')->name('blog.show');
+
+
 
 Auth::routes();
 
@@ -42,4 +47,19 @@ Route::resource('/category','CategoryController');
 
 //Tags Controller
 Route::resource('/tag','TagController');
+});
+
+
+// Making a midleawrr Admin
+Route::middleware(['auth','admin'])->group(function()
+{
+  Route::get('users', 'UsersController@index')->name('users.index');
+  Route::post('users/{user}/make-admin','UsersController@makeAdmin')->name('users.make-admin');
+    Route::get('users/profile','UsersController@edit')->name('users.edit-profile');
+
+      Route::put('users/profile','UsersController@update')->name('users.update-profile');
+
+
+   
+
 });

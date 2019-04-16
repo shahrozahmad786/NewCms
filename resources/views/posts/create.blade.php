@@ -33,7 +33,7 @@
                <div class="form-group">
 		 	 	 	 	<h4 for="title">Title</h4>
 
-		 	 	 	 		<input type="text" class="form-control" id="title" name="title"  value="{{isset($post) ? $post->title :"" }}" placeholder="Enter Name">
+		 	 	 	 		<input type="text" class="form-control" id="title" name="title"  value="{{isset($post) ? $post->title :" " }}" placeholder="Enter Name">
 		 	 	</div>   
 
 
@@ -43,8 +43,7 @@
 
 
 		 	 	 		
-	<textarea  class="form-control" id="description" name="description" cols="5" rows="5">
-		{{isset($post) ?$post->description :""}}
+	<textarea  class="form-control" id="description" name="description" cols="5" rows="5">{{isset($post) ?$post->description :""}}
 	</textarea>
 		 	 	
 
