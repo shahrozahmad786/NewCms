@@ -94,7 +94,7 @@ class PostsTableSeeder extends Seeder
 
     $post1=Post::create([
 
-    'title'=>'We relocated our office to a new designed garage',
+    'title'=>'Contrary to popular belief, Lorem Ipsum is not simply random text',
     'description'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500',
 
     'content'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
@@ -126,7 +126,7 @@ class PostsTableSeeder extends Seeder
 
         $post3=$author1->posts()->create([
 
-        'title'=>'We relocated our office to a new designed garage',
+        'title'=>'The standard chunk of Lorem Ipsum used since the 1500s',
         'description'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500',
 
         'content'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
@@ -140,7 +140,7 @@ class PostsTableSeeder extends Seeder
         
         $post4=$author2->posts()->create([
 
-        'title'=>'We relocated our office to a new designed garage',
+        'title'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
         'description'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500',
 
         'content'=>'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s',
