@@ -4,7 +4,7 @@
 use App\Category;
 use App\Post;
 use App\Tag;
-
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -101,7 +101,9 @@ class PostsTableSeeder extends Seeder
     'image'=>'posts/6.jpg',
 
     'category_id'=>$category1->id,
-    'user_id'=>$author1->id
+    'user_id'=>$author1->id,
+
+
 
 
     ]);
