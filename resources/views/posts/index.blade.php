@@ -64,7 +64,7 @@
 						@if($post->trashed())
         					<td>
 
-<form action={{route('restore-post',$post->id)}} method="POST">
+<form action="{{route('restore-post',$post->id)}}" method="POST">
 
 	@csrf
 	@method('PUT')

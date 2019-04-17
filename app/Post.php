@@ -10,6 +10,11 @@ class Post extends Model
   use SoftDeletes;
   protected $guarded=[];
 
+  protected $dates=[
+
+  	'published_at'
+  ];
+
 
 
 
@@ -34,5 +39,10 @@ class Post extends Model
   public function user()
   {
        return $this->belongsTo('App\User');
+  }
+
+  public function scopePublished($query)
+  {
+  	  	return $query->where('published_at','<=',now());
   }
 }

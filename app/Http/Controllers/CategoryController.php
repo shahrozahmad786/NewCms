@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Requests\Categories\UpdateCategoriesRequest;
 use App\Http\Requests\Categories\CreateCategoryRequest;
+use App\Http\Requests\Categories\UpdateCategoriesRequest;
+use App\Post;
 use Illuminate\Http\Request;
 use Session;
 
@@ -116,6 +117,7 @@ class CategoryController extends Controller
        }
        
        $category->delete();
+      
 
        session()->flash('success','Category Deleted successfully');
 

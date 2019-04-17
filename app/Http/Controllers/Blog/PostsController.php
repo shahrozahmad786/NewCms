@@ -32,14 +32,18 @@ class PostsController extends Controller
 
     		$posts=$category->posts()->simplePaginate(2);
     	}
-    	return view('blog.category')->with('category',$category)
-    	->with('posts',$posts)->with('categories',Category::all())->with('tags',Tag::all());
+    	return view('Blog.category')
+    	->with('category',$category)
+    	->with('posts',$posts)
+    	->with('categories',Category::all())
+    	->with('tags',Tag::all());
 
     }
 
     public function tag(Tag $tag)
     {
-    	return view('blog.tag')->with('tag',$tag)
+    	return view('blog.tag')
+    	->with('tag',$tag)
     	->with('posts',$tag->posts()->simplePaginate(2))
     	->with('tags',Tag::all())
     	->with('categories',Category::all());

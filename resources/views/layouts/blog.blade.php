@@ -9,8 +9,8 @@
     <title>@yield('title')</title>
 
     <!-- Styles -->
-    <link href="/assets/css/page.min.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="{{asset('css/page.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -333,8 +333,9 @@
 
 
     <!-- Scripts -->
-    <script src="/assets/js/page.min.js"></script>
-    <script src="/assets/js/script.js"></script>
+    <script src="{{asset('js/page.min.js')}}"></script>
+    <script src="{{asset('js/script.js')}}"></script>
+  
 
   </body>
 </html>

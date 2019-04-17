@@ -12,6 +12,7 @@
   	{{session()->get('error')}}
   	</div>
   	
+  	
 @endif
 				 
 

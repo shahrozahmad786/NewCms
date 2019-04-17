@@ -108,7 +108,7 @@ class PostController extends Controller
 
 
     {
-        $data=$request->only(['title','description','published_at','content']);
+        $data=$request->only(['title','description','published_at','content','category_id']);
 
 
         if($request->hasFile('image')){
